@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -11,6 +11,11 @@ def home():
 @app.route('/index')
 def index():
     return "И на Марсе будут яблони цвести!"
+
+
+@app.route('/promotion')
+def promotion():
+    return render_template('base.html')
 
 
 if __name__ == '__main__':

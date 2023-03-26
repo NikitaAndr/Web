@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, url_for
 
 app = Flask(__name__)
 
@@ -26,6 +26,12 @@ def image_mars():
 @app.route('/promotion_image')
 def promotion_image():
     return render_template('promotion_image.html')
+
+
+@app.route('/astronaut_selection', methods=['GET'])
+def astronaut_selection():
+    if request.method == 'GET':
+        return render_template('astronaut_selection.html')
 
 
 if __name__ == '__main__':

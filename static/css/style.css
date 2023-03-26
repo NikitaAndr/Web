@@ -1,3 +1,5 @@
 h1 {
-   color: #d22e3a
-}
+    background: #D9FFAD; /* Цвет фона под заголовком */
+    color: green; /* Цвет текста */
+    padding: 2px; /* Поля вокруг текста */
+   }

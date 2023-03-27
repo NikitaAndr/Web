@@ -8,9 +8,9 @@ def home():
     return "Миссия Колонизация Марса"
 
 
-@app.route('/index')
-def index():
-    return "И на Марсе будут яблони цвести!"
+@app.route('/index/<title>', methods=['GET', 'POST'])
+def index(title):
+    return render_template('base.html', title=title)
 
 
 @app.route('/promotion')

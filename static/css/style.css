@@ -9,3 +9,7 @@ form.login_form {
 }
 
 h1 {color: red;}
+
+h4 {color: red;
+    margin-left: 20px;
+    margin-right: 20px;}

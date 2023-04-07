@@ -52,5 +52,18 @@ def list_prof(num):
     return render_template('list_prof.html', num=num, title='Список профессий', sp=sp)
 
 
+@app.route('/answer', methods=['GET', 'POST'])
+@app.route('/auto_answer', methods=['GET', 'POST'])
+def answer():
+    sl = {'Фамилия': 'Андреев',
+          'Имя': 'Никита',
+          'Образование': 'Начальное',
+          'Профессия': 'рабочий учёный инженер',
+          'Пол': 'мужской',
+          'Мотивация': 'Быть полезным',
+          'Готовы остаться на марсе?': 'True'}
+    return render_template('answer.html', sl=sl)
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')

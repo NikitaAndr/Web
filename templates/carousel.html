@@ -16,9 +16,9 @@
         <!-- Indicators -->
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-            <li data-target="#myCarousel" data-slide-to="3"></li>
+            {% for i in range(q - 1) %}
+            <li data-target="#myCarousel" data-slide-to='{{ i }}'></li>
+            {% endfor%}
         </ol>
 
         <!-- Wrapper for slides -->
@@ -27,18 +27,11 @@
                 <img src="/static/img/марс.png" alt="" style="width:100%;">
             </div>
 
+            {% for i in range(1, q) %}
             <div class="item">
-                <img src="/static/img/img.png" alt="" style="width:100%;">
+                <img src='/static/img/img{{ i }}.png' alt="" style="width:100%;">
             </div>
-
-            <div class="item">
-                <img src="/static/img/img_1.png" alt="" style="width:100%;">
-            </div>
-
-            <div class="item">
-                <img src="/static/img/img_2.png" alt="" style="width:100%;">
-            </div>
-
+            {% endfor %}
         </div>
 
         <!-- Left and right controls -->
@@ -52,6 +45,14 @@
         </a>
     </div>
 </div>
+
+<form class="login_form" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="photo">Добавить картинку</label>
+        <input type="file" class="form-control-file" id="photo" name="photo">
+        <button type="submit" class="btn btn-primary">Добавить</button>
+    </div>
+</form>
 
 </body>
 </html>

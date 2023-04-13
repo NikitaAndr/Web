@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, url_for
 
 app = Flask(__name__)
+count_foto = 1
 
 
 @app.route('/')
@@ -34,9 +35,13 @@ def astronaut_selection():
         return render_template('astronaut_selection.html')
 
 
-@app.route('/carousel')
+@app.route('/carousel', methods=['GET', 'POST'])
 def carousel():
-    return render_template('carousel.html')
+    global count_foto
+    if request.method == 'POST':
+        request.files['photo'].save(f'static/img/img{count_foto}.png')
+        count_foto += 1
+    return render_template('carousel.html', q=count_foto)
 
 
 @app.route('/training/<prof>', methods=['GET', 'POST'])

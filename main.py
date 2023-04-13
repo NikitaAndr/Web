@@ -1,6 +1,11 @@
 from flask import Flask, render_template, request, url_for
+from data import db_session
+from data.users import User
+from data.Jobs import Jobs
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
+
 count_foto = 1
 
 
@@ -70,5 +75,42 @@ def answer():
     return render_template('answer.html', sl=sl)
 
 
+def add_all():
+    db_sess = db_session.create_session()
+    users = (User(surname='Scott',
+                  name='Ridley',
+                  age=21,
+                  position='captain',
+                  speciality='research engineer',
+                  address='module_1',
+                  email='scott_chief@mars.org'),
+             User(surname='Andreev',
+                  name='Nikita',
+                  age=15,
+                  position='team_lid',
+                  speciality='None',
+                  address='module_2',
+                  email='Nikita@mars.org'),
+             User(surname='Pastuhov',
+                  name='Oleg',
+                  age=30,
+                  position='director',
+                  speciality='teacher',
+                  address='module_200',
+                  email='Pastuhov@mars.org'),
+             User(surname='Jp',
+                  name='Python',
+                  age=150,
+                  position='Main',
+                  speciality='Jp',
+                  address='None',
+                  email='python@mars.org'),
+             )
+    for user in users:
+        db_sess.add(user)
+    db_sess.commit()
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
+    db_session.global_init("db/blogs.db")

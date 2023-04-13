@@ -111,6 +111,17 @@ def add_all():
     db_sess.commit()
 
 
+def first_job():
+    job = Jobs(team_leader=1,
+               job='deployment of residential modules 1 and 2',
+               work_size=15,
+               collaborators='2, 3',
+               is_finished=False)
+    db_sess = db_session.create_session()
+    db_sess.add(job)
+    db_sess.commit()
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
     db_session.global_init("db/blogs.db")
